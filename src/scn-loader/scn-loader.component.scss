@@ -1,0 +1,42 @@
+scn-loader {
+  .loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    svg {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  .content {
+    font-size: 14px;
+    margin-top: 3px;
+  }
+
+  .relative-mask {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    &.rm-button {
+      background: #000000;
+      border-radius: 4px;
+    }
+  }
+}
+
+
