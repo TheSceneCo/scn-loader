@@ -10,6 +10,7 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 export class ScnLoaderComponent implements OnInit {
   @Input() theme: string = '';
   @Input() color: string = '#000';
+  @Input() column: boolean = false;
   @Input() bgColor: string = 'transparent';
 
   constructor() {
