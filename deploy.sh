@@ -35,7 +35,7 @@ ng build --bh /$DIR/$VERSION/demo/
 
 echo >&2 "${yellow}8 --- Copy demo to webserver (ssh) - ${green}/var/www/thescene-components/$DIR/$VERSION/demo${reset}"
 ssh  kkaabbaa@uxbox.thescene.co "mkdir -p /var/www/thescene-components/$DIR/$VERSION/demo"
-scp  -r dist/* kkaabbaa@uxbox.thescene.co:/var      /www/thescene-components/$DIR/$VERSION/demo
+scp  -r dist/* kkaabbaa@uxbox.thescene.co:/var/www/thescene-components/$DIR/$VERSION/demo
 
 echo >&2 "${yellow}9 --- Generate documentation${reset}"
 npm run compodoc
