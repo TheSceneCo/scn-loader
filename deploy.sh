@@ -31,16 +31,17 @@ echo >&2 "${yellow}6 --- Publish project${reset}"
 npm publish
 
 echo >&2 "${yellow}7 --- Build demo${reset}"
-ng build --bh /$DIR/$VERSION/demo/
+ng build --bh /$DIR/$VERSION/demo/ -e prod
 
 echo >&2 "${yellow}8 --- Copy demo to webserver (ssh) - ${green}/var/www/thescene-components/$DIR/$VERSION/demo${reset}"
 ssh  kkaabbaa@uxbox.thescene.co "mkdir -p /var/www/thescene-components/$DIR/$VERSION/demo"
-scp  -r dist/* kkaabbaa@uxbox.thescene.co:/var/www/thescene-components/$DIR/$VERSION/demo
+rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress dist/* kkaabbaa@uxbox.thescene.co:/var/www/thescene-components/$DIR/$VERSION/demo
+rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress .htaccess kkaabbaa@uxbox.thescene.co:/var/www/thescene-components/$DIR/$VERSION/demo
 
 echo >&2 "${yellow}9 --- Generate documentation${reset}"
 npm run compodoc
 
 echo >&2 "${yellow}10 --- Copy documentation to webserver (ssh) - ${green}/var/www/thescene-components/$DIR/$VERSION/docs${reset}"
 ssh kkaabbaa@uxbox.thescene.co "mkdir -p /var/www/thescene-components/$DIR/$VERSION/docs"
-scp -r documentation/* kkaabbaa@uxbox.thescene.co:/var/www/thescene-components/$DIR/$VERSION/docs
+rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress documentation/* kkaabbaa@uxbox.thescene.co:/var/www/thescene-components/$DIR/$VERSION/docs
 

@@ -19,7 +19,9 @@ export class AppComponent {
   moduleVersion: string;
   moduleName: string;
 
-  constructor(private titleService: Title, private translate: TranslateService) {
+  constructor(
+      private titleService: Title,
+      private translate: TranslateService) {
     this.moduleVersion = moduleVersion;
     this.moduleName = moduleName;
 
